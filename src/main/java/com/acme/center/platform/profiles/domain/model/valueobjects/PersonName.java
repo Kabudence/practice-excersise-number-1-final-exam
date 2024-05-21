@@ -1,4 +1,4 @@
-package com.acme.center.platform.profiles.domain.valueobjects;
+package com.acme.center.platform.profiles.domain.model.valueobjects;
 
 import jakarta.persistence.Embeddable;
 

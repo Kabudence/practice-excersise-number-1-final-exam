@@ -1,4 +1,4 @@
-package com.acme.center.platform.profiles.domain.valueobjects;
+package com.acme.center.platform.profiles.domain.model.valueobjects;
 
 public record StreetAddress(
         String street,
