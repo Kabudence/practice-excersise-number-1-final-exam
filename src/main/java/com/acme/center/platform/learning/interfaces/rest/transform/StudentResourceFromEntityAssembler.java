@@ -7,7 +7,9 @@ public class StudentResourceFromEntityAssembler {
     public static StudentResource toResourceFromEntity(Student student) {
         return new StudentResource(
                 student.getStudentRecordId(),
-                student.getProfileId()
+                student.getProfileId(),
+                student.getTotalCompletedCourses(),
+                student.getTotalTutorials()
         );
     }
 }
