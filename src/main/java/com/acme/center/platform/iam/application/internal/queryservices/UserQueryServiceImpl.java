@@ -1,4 +1,4 @@
-package com.acme.center.platform.iam.application.queryservices;
+package com.acme.center.platform.iam.application.internal.queryservices;
 
 import com.acme.center.platform.iam.domain.model.aggregates.User;
 import com.acme.center.platform.iam.domain.model.queries.GetAllUsersQuery;

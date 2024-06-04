@@ -1,4 +1,4 @@
-package com.acme.center.platform.iam.application.queryservices;
+package com.acme.center.platform.iam.application.internal.queryservices;
 
 import com.acme.center.platform.iam.domain.model.entities.Role;
 import com.acme.center.platform.iam.domain.model.queries.GetAllRolesQuery;

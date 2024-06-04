@@ -1,4 +1,4 @@
-package com.acme.center.platform.iam.application.commandservices;
+package com.acme.center.platform.iam.application.internal.commandservices;
 
 import com.acme.center.platform.iam.application.internal.outboundservices.hashing.HashingService;
 import com.acme.center.platform.iam.application.internal.outboundservices.tokens.TokenService;

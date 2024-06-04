@@ -1,4 +1,4 @@
-package com.acme.center.platform.iam.application.commandservices;
+package com.acme.center.platform.iam.application.internal.commandservices;
 
 import com.acme.center.platform.iam.domain.model.commands.SeedRolesCommand;
 import com.acme.center.platform.iam.domain.model.entities.Role;
