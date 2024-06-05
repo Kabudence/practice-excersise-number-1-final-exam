@@ -24,8 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
  *     This controller is responsible for handling authentication requests.
  *     It exposes two endpoints:
  *     <ul>
- *         <li>POST /api/v1/auth/sign-in</li>
- *         <li>POST /api/v1/auth/sign-up</li>
+ *         <li>POST /api/v1/authentication/sign-in</li>
+ *         <li>POST /api/v1/authentication/sign-up</li>
  *     </ul>
  * </p>
  */
