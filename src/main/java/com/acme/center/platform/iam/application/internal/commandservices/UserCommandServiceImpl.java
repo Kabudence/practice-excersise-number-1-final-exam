@@ -5,12 +5,15 @@ import com.acme.center.platform.iam.application.internal.outboundservices.tokens
 import com.acme.center.platform.iam.domain.model.aggregates.User;
 import com.acme.center.platform.iam.domain.model.commands.SignInCommand;
 import com.acme.center.platform.iam.domain.model.commands.SignUpCommand;
+import com.acme.center.platform.iam.domain.model.entities.Role;
+import com.acme.center.platform.iam.domain.model.valueobjects.Roles;
 import com.acme.center.platform.iam.domain.services.UserCommandService;
 import com.acme.center.platform.iam.infrastructure.persistence.jpa.repositories.RoleRepository;
 import com.acme.center.platform.iam.infrastructure.persistence.jpa.repositories.UserRepository;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
@@ -31,10 +34,11 @@ public class UserCommandServiceImpl implements UserCommandService {
     public Optional<User> handle(SignUpCommand command) {
         if (userRepository.existsByUsername(command.username()))
             throw new RuntimeException("Username already exists");
-        var roles = command.roles()
-                .stream()
-                .map(role -> roleRepository.findByName(role.getName())
-                        .orElseThrow(() -> new RuntimeException("Role not found"))).toList();
+        var roles = command.roles();
+        if (roles.isEmpty()) {
+            var role = roleRepository.findByName(Roles.ROLE_USER);
+            if (role.isPresent()) roles.add(role.get());
+        } else roles = roles.stream().filter(role -> roleRepository.findByName(role.getName()).isPresent()).toList();
         var user = new User(command.username(), hashingService.encode(command.password()), roles);
         userRepository.save(user);
         return userRepository.findByUsername(command.username());
