@@ -50,8 +50,8 @@ public class User extends AuditableAbstractAggregateRoot<User> {
     }
 
     public User addRoles(List<Role> roles) {
-        var validatedRoles = Role.validateRoleSet(roles);
-        this.roles.addAll(validatedRoles);
+        //var validatedRoles = Role.validateRoleSet(roles);
+        this.roles.addAll(roles);
         return this;
     }
 }
