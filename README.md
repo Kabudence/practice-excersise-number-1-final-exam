@@ -16,7 +16,7 @@
 - Inventory: Manages intelligent devices (Device).
 - Analytics: Manages performance indicators (PerformanceIndicator).
 - Shared: Contains common/reusable elements such as DeviceType.
-- IAM: Manages platform users (User) .
+- IAM: Manages platform users (User) .d
 ### Reference Documentation
 
 For further reference, please consider the following sections:
