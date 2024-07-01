@@ -22,12 +22,13 @@ import java.util.Date;
 @Entity
 public class Device extends AuditableAbstractAggregateRoot<Device> {
 
-
+    @NotNull
     @Getter
     @Size(max = 30, message = "Serial number must be maximum 30 characters")
     @NotBlank(message = "Serial number is required")
     private String serialNumber;
 
+    @NotNull
     @Getter
     @Size(max = 50, message = "Model must be maximum 50 characters")
     @NotBlank(message = "Model is required")
