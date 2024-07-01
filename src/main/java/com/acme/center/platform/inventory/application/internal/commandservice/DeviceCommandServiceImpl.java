@@ -4,6 +4,9 @@ import com.acme.center.platform.inventory.application.internal.outboundedservice
 import com.acme.center.platform.inventory.domain.model.aggregates.Device;
 import com.acme.center.platform.inventory.domain.model.commands.CreateDeviceCommand;
 import com.acme.center.platform.inventory.domain.model.commands.UpdateDeviceCommand;
+import com.acme.center.platform.inventory.domain.model.exceptions.DeviceTypeNotExistException;
+import com.acme.center.platform.inventory.domain.model.exceptions.InstallationDateCannotPastException;
+import com.acme.center.platform.inventory.domain.model.exceptions.SerialNumberAlreadyExistsException;
 import com.acme.center.platform.inventory.domain.model.valueobjects.DeviceStatus;
 import com.acme.center.platform.inventory.domain.services.DeviceCommandService;
 import com.acme.center.platform.inventory.infrastructure.jpa.repositories.DeviceRepository;
@@ -78,13 +81,13 @@ public class DeviceCommandServiceImpl implements DeviceCommandService {
     private void validation(String serialNumber, Date date , DeviceTypes deviceTypes) {
         Date currentDate = new Date();
         if (deviceRepository.existsBySerialNumber(serialNumber)) {
-            throw new IllegalArgumentException("Serial number already exists");
+             throw new SerialNumberAlreadyExistsException(serialNumber);
         }
         if(!deviceTypeRepository.existsByName(deviceTypes)){
-            throw new IllegalArgumentException("Device type does not exist");
+            throw new DeviceTypeNotExistException(deviceTypes);
         }
         if(date.before(currentDate)|| date.equals(currentDate)){
-            throw new IllegalArgumentException("Installation date cannot be in the past");
+            throw new InstallationDateCannotPastException(date);
         }
 
 
