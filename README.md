@@ -1,4 +1,4 @@
-# ACME Learning Center Platform
+# THE WORLD OF KABUDENCE
 
 ## Summary
 -Josue Hidalgo-Kabudence
@@ -13,8 +13,10 @@
 - Domain-Driven Design
 
 ## Bounded Contexts
-This version of ACME Learning Center Platform is divided into three bounded contexts: Profiles, Learning, and Identity and Access Management (IAM).
-
+- Inventory: Manages intelligent devices (Device).
+- Analytics: Manages performance indicators (PerformanceIndicator).
+- Shared: Contains common/reusable elements such as DeviceType.
+- IAM: Manages platform users (User).
 ### Profiles Context
 
 The Profiles Context is responsible for managing the profiles of the users. It includes the following features:
