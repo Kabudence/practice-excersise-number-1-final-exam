@@ -3,7 +3,7 @@
 ## Summary
 -Josue Hidalgo-Kabudence
 ## Features
-- RESTful API
+- RESTFULL API
 - OpenAPI Documentation
 - Swagger UI
 - Spring Boot Framework
