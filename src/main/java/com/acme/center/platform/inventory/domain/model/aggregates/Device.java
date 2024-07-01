@@ -38,7 +38,8 @@ public class Device extends AuditableAbstractAggregateRoot<Device> {
      */
     @ManyToOne
     @NotNull
-    @JoinColumn(name = "device_type_id")
+    @JoinTable(name = "device_device_type", joinColumns = @JoinColumn(name = "device_id"),
+            inverseJoinColumns = @JoinColumn(name = "device_type_id"))
     private DeviceType deviceType;
 
     @NotNull
@@ -59,8 +60,11 @@ public class Device extends AuditableAbstractAggregateRoot<Device> {
      */
     @ManyToOne
     @NotNull
-    @JoinColumn(name = "performance_indicator_id")
+    @JoinTable(name = "device_performance_indicator", joinColumns = @JoinColumn(name = "device_id"),
+            inverseJoinColumns = @JoinColumn(name = "performance_indicator_id"))
     private PerformanceIndicator performanceIndicator;
+
+
 
     /**
      * Default constructor.

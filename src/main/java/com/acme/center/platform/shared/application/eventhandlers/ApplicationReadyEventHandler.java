@@ -1,7 +1,5 @@
-package com.acme.center.platform.iam.application.internal.eventhandlers;
+package com.acme.center.platform.shared.application.eventhandlers;
 
-import com.acme.center.platform.iam.domain.model.commands.SeedRolesCommand;
-import com.acme.center.platform.iam.domain.services.RoleCommandService;
 import com.acme.center.platform.shared.application.commandservice.DeviceTypeCommandService;
 import com.acme.center.platform.shared.domain.model.commands.SeedDeviceTypeCommand;
 import org.slf4j.Logger;
@@ -12,26 +10,26 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 
-@Service
+@Service("deviceTypeApplicationReadyEventHandler")
 public class ApplicationReadyEventHandler {
-    private final RoleCommandService roleCommandService;
-    private static final Logger LOGGER = LoggerFactory.getLogger(ApplicationReadyEventHandler.class);
+    private final DeviceTypeCommandService deviceTypeCommandService;
+    private static final Logger LOGGER = LoggerFactory.getLogger(com.acme.center.platform.iam.application.internal.eventhandlers.ApplicationReadyEventHandler.class);
 
 
-    public ApplicationReadyEventHandler(RoleCommandService roleCommandService, DeviceTypeCommandService deviceTypeCommandService) {
-        this.roleCommandService = roleCommandService;
+    public ApplicationReadyEventHandler(DeviceTypeCommandService deviceTypeCommandService) {
+        this.deviceTypeCommandService = deviceTypeCommandService;
     }
 
     @EventListener
     public void on(ApplicationReadyEvent event) {
         var applicationName = event.getApplicationContext().getId();
         LOGGER.info("Starting to verify if roles seeding is needed for {} at {}", applicationName, currentTimestamp());
-        var seedRolesCommand = new SeedRolesCommand();
-        roleCommandService.handle(seedRolesCommand);
+        var seedDeviceTypeCommand = new SeedDeviceTypeCommand();
+        deviceTypeCommandService.handle(seedDeviceTypeCommand);
         LOGGER.info("Roles seeding verification finished for {} at {}", applicationName, currentTimestamp());
     }
-
     private Timestamp currentTimestamp() {
         return new Timestamp(System.currentTimeMillis());
     }
+
 }

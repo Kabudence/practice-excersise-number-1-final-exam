@@ -1,8 +1,4 @@
 package com.acme.center.platform.shared.application.commandservice;
-
-import com.acme.center.platform.iam.domain.model.entities.Role;
-import com.acme.center.platform.iam.domain.model.valueobjects.Roles;
-import com.acme.center.platform.inventory.domain.services.DeviceCommandService;
 import com.acme.center.platform.shared.domain.model.commands.SeedDeviceTypeCommand;
 import com.acme.center.platform.shared.domain.model.entities.DeviceType;
 import com.acme.center.platform.shared.domain.model.valueobjects.DeviceTypes;
